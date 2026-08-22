@@ -7,6 +7,31 @@ project:
   jupyter: true
   toc:
     - file: intro.md
+    - title: Getting Started
+      children:
+        - file: getting-started/hub-url.md
+        - file: getting-started/authentication.md
+    - title: User Environments
+      children:
+        - file: environments/cpu.md
+        - file: environments/gpu.md
+        - file: environments/packages.md
+        - file: environments/limits.md
+    - title: Files and Data
+      children:
+        - file: files/loading-files.md
+        - file: files/sharing.md
+    - title: AI Tools
+      children:
+        - file: ai-tools/jupyter-ai.md
+        - file: ai-tools/jupytutor.md
+    - file: best-practices/index.md
+      children:
+        - file: best-practices/rstudio.md
+        - file: best-practices/inference.md
+        - file: best-practices/notebooks-and-git.md
+    - file: administration.md
+    - file: getting-help.md
 
 site:
   template: book-theme
@@ -22,3 +47,6 @@ site:
     favicon: _static/favicon.ico
     style: _static/custom.css
     outline_maxdepth: 2
+    # Keep source folders in page URLs (/environments/cpu, not /cpu). Without
+    # this MyST flattens to the bare filename, which collides across folders.
+    folders: true
