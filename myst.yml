@@ -10,12 +10,15 @@ project:
 
 site:
   template: book-theme
+  parts:
+    # Replaces the default "Made with MyST" sidebar badge. The target file is
+    # intentionally empty, which renders nothing at all.
+    primary_sidebar_footer: _static/sidebar-footer.md
   actions:
     - title: Open Issue
       url: https://github.com/cloudbank-project/cloudbank-classroom-docs/issues/new
   options:
-    logo: _static/ds.svg
+    logo: _static/cloudbank.png
     favicon: _static/favicon.ico
-    logo_text: CloudBank Classroom
     style: _static/custom.css
     outline_maxdepth: 2
