@@ -1,0 +1,9 @@
+/* External links in page content.
+   MyST renders these as <a class="link" target="_blank" rel="noreferrer">.
+   Scoped to .link so nav/footer chrome links keep their theme colors. */
+a.link[target="_blank"] {
+    color: #549bb3 !important;
+}
+a.link[target="_blank"]:hover {
+    color: #4a88a0 !important;
+}

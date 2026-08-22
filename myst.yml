@@ -1,0 +1,21 @@
+# See docs at: https://mystmd.org/guide/frontmatter
+version: 1
+project:
+  title: CloudBank Classroom Docs
+  description: Documentation for CloudBank Classroom
+  github: cloudbank-project/cloudbank-classroom-docs
+  jupyter: true
+  toc:
+    - file: intro.md
+
+site:
+  template: book-theme
+  actions:
+    - title: Open Issue
+      url: https://github.com/cloudbank-project/cloudbank-classroom-docs/issues/new
+  options:
+    logo: _static/ds.svg
+    favicon: _static/favicon.ico
+    logo_text: CloudBank Classroom
+    style: _static/custom.css
+    outline_maxdepth: 2
