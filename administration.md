@@ -1,7 +1,7 @@
 # Admin Dashboard
 
 If you have admin access on your hub, JupyterHub gives you a dashboard listing everyone on it. From
-there you can restart a server that has got stuck, and open a student's environment to see what they
+there you can restart a server that has got stuck, or open a student's environment to see what they
 are seeing.
 
 ## Reaching the dashboard
