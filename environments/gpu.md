@@ -43,6 +43,27 @@ Inside the GPU profile you choose an image:
 - A TensorFlow/JAX image.
 - A plain PyTorch image, if you don't need the extra LLM tooling and want a smaller environment.
 
+## If you don't see the profile picker
+
+The picker only appears when you have no server running. If you already have a session going —
+most often a CPU one you started earlier and haven't shut down — logging back in drops you straight
+into it, with no picker and no chance to switch. It works the same way in reverse: a running GPU
+session sends you back to GPU rather than offering you CPU.
+
+To get the picker back, stop the server you already have:
+
+1. In JupyterLab, go to **File > Hub Control Panel**.
+2. Select **Stop My Server**, and wait a few seconds for it to respond.
+3. Select **Start My Server**.
+
+The picker appears on that second start.
+
+:::{note}
+This tends to catch a class out at the beginning of a lab: everyone logged in on CPU earlier in the
+week, those sessions are still up, and nobody sees the GPU option. Stopping the server is the whole
+fix — it isn't a problem with the hub's GPU access.
+:::
+
 ## Startup time: why it isn't always instant
 
 The GPU profile can start in under 30 seconds, or take several minutes. Both are normal, and the
