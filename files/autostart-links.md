@@ -2,7 +2,7 @@
 
 Some hubs offer a choice of server types when a student signs in, such as a CPU-only server and a
 GPU server, each with its own images. Only hubs set up this way have the Server Options page below,
-and only they can use autostart links.
+and only they need autostart links; hubs without profiles choices always autostart!
 
 :::{figure} ../images/server-options.png
 :alt: The Server Options page with a CPU only profile selected and a GPU profile below it, each with an Image dropdown, a Copy Permalink link at the top right, and an orange Start button.
