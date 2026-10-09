@@ -125,3 +125,6 @@ Send the same link again later and nbgitpuller merges rather than overwrites:
   nothing is lost.
 
 If a link does not behave the way you expect, [getting help](../getting-help.md) covers where to ask.
+
+To skip the server options page as well, so students go from the link straight into a running
+server, see [Autostart Links](autostart-links.md).

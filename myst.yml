@@ -24,6 +24,7 @@ project:
     - title: Files and Data
       children:
         - file: files/loading-files.md
+        - file: files/autostart-links.md
         - file: files/sharing.md
     - title: AI Tools
       children:
