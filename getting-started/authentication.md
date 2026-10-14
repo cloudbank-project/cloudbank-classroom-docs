@@ -1,8 +1,8 @@
 # Authentication
 
 Most CloudBank Classroom hubs sign you in through CILogon. You do not create an account for the
-hub. You use the account your institution already gave you, and CILogon reaches it through either
-Google or Microsoft.
+hub. You use the account your institution already gave you, and CILogon reaches it through your
+institution's own sign-in: Google, Microsoft, or an identity provider the institution runs itself.
 
 A small number of hubs sign in with GitHub instead. If yours does, see
 [Hubs that sign in with GitHub](#hubs-that-sign-in-with-github) below — those hubs need a step the
@@ -10,8 +10,9 @@ CILogon ones do not.
 
 ## Signing in
 
-Go to [your hub's address](hub-url.md). CILogon asks which identity provider to use and offers
-Microsoft and Google. Choose the one your institution uses. If you check "Remember this selection",
+Go to [your hub's address](hub-url.md). CILogon asks which identity provider to use. Most hubs
+offer Google alongside either Microsoft or the institution's own identity provider, listed under
+the institution's name. Choose the one your institution uses. If you check "Remember this selection",
 CILogon skips this step next time.
 
 :::{figure} ../images/CILogon.png
@@ -45,7 +46,7 @@ it from their own account.
 
 :::{note}
 This only affects institutions whose identity provider is Microsoft. Institutions that sign in
-through Google never see this screen.
+through Google, or through an identity provider they run themselves, never see this screen.
 :::
 
 "Unverified" is Microsoft's publisher-verification label. It is not a security finding, and the
