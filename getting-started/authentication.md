@@ -33,6 +33,65 @@ your hub in a private or incognito window.
 If your institutional account does not get you in, [getting help](../getting-help.md) covers where
 to ask.
 
+## When Microsoft asks for admin approval
+
+Some institutions that sign in through Microsoft see a screen saying **"Need admin approval"**,
+with CILogon listed as an unverified application, instead of being signed in.
+
+Nothing is wrong with your account or with the hub. Microsoft requires a tenant administrator to
+approve CILogon once, for the whole institution. Until that happens nobody at the institution can
+sign in through Microsoft, and there is nothing an individual student or instructor can do about
+it from their own account.
+
+:::{note}
+This only affects institutions whose identity provider is Microsoft. Institutions that sign in
+through Google never see this screen.
+:::
+
+"Unverified" is Microsoft's publisher-verification label. It is not a security finding, and the
+permissions being requested are listed on the consent screen itself.
+
+### For instructors: what to send IT
+
+Forward the text below to whoever manages your Microsoft 365 or Entra tenant, replacing
+`{Institution}`, `{hub}` and `{domain}`. It answers the questions IT usually asks, so it should be
+all they need.
+
+```text
+We are asking you to grant admin consent for CILogon in your Microsoft Entra tenant so faculty and
+students at {Institution} can sign in to a JupyterHub used for coursework at
+{hub}.cloudbank.2i2c.cloud.
+
+What CILogon is. A federated identity service operated by NCSA at the University of Illinois
+Urbana-Champaign under NSF funding, used widely across research and higher education.
+Documentation: https://www.cilogon.org/faq
+
+Why it says "unverified." That is Microsoft's publisher-verification label, not a security
+finding. The permissions being requested are listed on the consent screen itself.
+
+What it actually does:
+
+- Credentials never leave your environment. Users are redirected to your own Microsoft login page
+  and authenticate there. Nothing is typed into the hub.
+- Your MFA still applies, because your tenant is performing the authentication.
+- The only attribute we receive is the email address. It is used as the username, and nothing else
+  is read, stored, or transferred.
+- No accounts are provisioned on our side. There is no user list to maintain - if an account is
+  disabled at the college, that person can no longer sign in.
+- Access is limited to @{domain}. Any other domain is rejected by the hub regardless of what Entra
+  allows.
+
+To approve: an Entra admin can use the "Have an admin account? Sign in with that account" link on
+the screen the user hit, or grant consent for CILogon under Enterprise applications in the Entra
+admin center.
+```
+
+Once consent is granted, sign-in goes through normally for everyone at the institution. It is a
+one-time approval, not something each person repeats.
+
+If IT comes back with questions this does not cover, [getting help](../getting-help.md) covers
+where to ask.
+
 ## Hubs that sign in with GitHub
 
 **Most hubs do not use this.** Of the hubs running today, 14 sign in with GitHub and the rest use
