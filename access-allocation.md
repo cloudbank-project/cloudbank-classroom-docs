@@ -28,8 +28,15 @@ outgrows it.
 2. **Make yourself the project lead.** For a classroom allocation this is the instructor teaching
    the course.
 3. **Prepare the request.** You need a project title and an overview describing your goals, how you
-   expect to use the resources, and any software you need. A course syllabus is the supporting
-   document for classroom work. Grant details are optional.
+   expect to use the resources, and any software you need. You also attach two PDFs: **a CV or a
+   résumé** for the project lead and any co-leads, and a course syllabus for classroom work. Grant
+   details are optional.
+
+   :::{note}
+   A **résumé is fine** — this does not have to be a full academic CV. Three pages is the maximum
+   allowed, not a target, and a short one is perfectly acceptable. This step stalls more requests
+   than it should, usually because people set it aside to write something longer.
+   :::
 4. **Submit it.** From the opportunities page choose Explore ACCESS, complete the form, tick the
    ACCESS Credits box, and submit. You will get an email confirming receipt.
 5. **Send the project number to CloudBank.** It looks like `CIS261543`. Nothing connects your hub
