@@ -66,6 +66,9 @@ llm = Llama(
 `n_gpu_layers=-1` puts the whole model on the GPU. Lowering it moves layers to CPU — slower, but a
 way to fit a model that is otherwise too large.
 
+[Tuning Llama for a Small Model](tuning-llama.md) covers these settings properly, including
+`n_ctx`, which is the usual cause of an out-of-memory error at load.
+
 :::{note}
 Shared-folder downloads only work from an account with write access there, normally an
 instructor's. Do the download once yourself before class.
