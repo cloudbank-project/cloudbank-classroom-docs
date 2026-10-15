@@ -34,6 +34,7 @@ project:
       children:
         - file: best-practices/rstudio.md
         - file: best-practices/inference.md
+        - file: best-practices/tuning-llama.md
         - file: best-practices/notebooks-and-git.md
     - file: access-allocation.md
     - file: administration.md
