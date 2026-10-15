@@ -33,8 +33,12 @@ per-student approval step.
 
 ## Choosing the GPU profile
 
-At the spawn page, pick the GPU profile instead of CPU only. Each GPU is an NVIDIA T4, shared
-between **two people at a time**, with 16GB of RAM split between them.
+At the spawn page, pick the GPU profile instead of CPU only. Each GPU is an NVIDIA T4 with 16GB of
+VRAM, shared between **two people at a time**.
+
+The 16GB is **not** divided between you. Both sessions draw on the same pool, so a large model
+loaded by one person leaves less for the other — see
+[Setting Up Inference](../best-practices/inference.md).
 
 Inside the GPU profile you choose an image:
 

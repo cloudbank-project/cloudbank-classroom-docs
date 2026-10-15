@@ -76,6 +76,31 @@ with the file browser alongside.
 
 Choose **Copy nbgitpuller link** and share it however your course reaches students.
 
+### Landing students in a folder instead of a notebook
+
+Generating the link from a notebook page sends students straight to that notebook. Sometimes you
+want them in a folder instead — a whole lab with its data files, say, where they pick the file
+themselves.
+
+Open the **folder** on GitHub rather than a notebook, then use the extension the same way. It reads
+the path from whichever page you are on, so a folder page produces a folder link.
+
+If you already have a notebook link, you can shorten it by hand. Delete the file name from the end
+of `urlpath`, leaving the folder:
+
+```
+...&urlpath=tree%2Fmaterials-fds-v2%2Fhw%2Fhw01%2Fhw01.ipynb    opens hw01.ipynb
+...&urlpath=tree%2Fmaterials-fds-v2%2Fhw%2Fhw01                 opens the hw01 folder
+```
+
+What students see on arrival depends on the target you picked in **Open in**: JupyterLab shows the
+folder in the file browser, and Classic Notebook shows a directory listing.
+
+:::{note}
+The whole repository is copied either way. `urlpath` only decides where the student lands once the
+copy finishes, so a folder link is not a way to give students part of a repository.
+:::
+
 ## What the link contains
 
 A generated link looks like this:
