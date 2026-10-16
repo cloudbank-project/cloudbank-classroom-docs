@@ -3,7 +3,7 @@
 Documentation for [CloudBank Classroom](https://www.cloudbank.org/), built with
 [Jupyter Book 2](https://next.jupyterbook.org/) (MyST).
 
-**Published site:** https://cloudbank-project.github.io/cloudbank-classroom-docs/
+**Published site:** https://docs.classroom.cloudbank.org/
 
 Every push to `main` rebuilds and redeploys the site via
 [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml).
