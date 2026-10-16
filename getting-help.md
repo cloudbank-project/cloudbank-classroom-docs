@@ -22,6 +22,7 @@ These are the requests that need someone on our side:
 - A dataset large enough to belong in the shared folder rather than in each student's copy. See
   [sharing data and course materials](files/sharing.md).
 - [Jupyter AI](ai-tools/jupyter-ai.md) or [JupyTutor](ai-tools/jupytutor.md) set up on your hub.
+- Access to the hosted Otter grader. See [grading with Otter](grading/otter-grader.md).
 - A hub for a campus that does not have one yet. See [hub URL](getting-started/hub-url.md) for the
   current list.
 

@@ -26,6 +26,9 @@ project:
         - file: files/loading-files.md
         - file: files/autostart-links.md
         - file: files/sharing.md
+    - title: Grading
+      children:
+        - file: grading/otter-grader.md
     - title: AI Tools
       children:
         - file: ai-tools/jupyter-ai.md
