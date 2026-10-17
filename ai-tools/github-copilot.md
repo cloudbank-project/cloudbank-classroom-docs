@@ -8,17 +8,20 @@ Copilot extension installed. All you need is a GitHub account.
 ## Sign in to GitHub
 
 1. Open VS Code from the JupyterHub launcher.
-2. Click the **Accounts** icon at the bottom-left of the window.
-3. Choose **Sign in with GitHub to use GitHub Copilot**.
+2. Look for the sign-in in both of these places. Which one you see depends on your VS Code
+   version, and either works:
+   - the **Copilot** icon at the bottom-right of the window, next to the breadcrumbs
+   - the **Accounts** icon at the bottom-left of the window
+3. Choose the option to sign in with GitHub.
 4. Your browser opens a GitHub page. Sign in and click **Authorize**.
 
 :::{figure} ../images/copilot-sign-in.png
-:alt: The VS Code Accounts menu at the bottom-left with the option to sign in with GitHub to use GitHub Copilot.
+:alt: The two places to sign in to Copilot: the Copilot icon at the bottom-right and the Accounts icon at the bottom-left of VS Code.
 
-The Accounts icon is at the bottom-left of VS Code.
+Sign in from the Copilot icon at the bottom-right or the Accounts icon at the bottom-left.
 :::
 
-Once you are signed in, the Accounts icon shows your GitHub username.
+Once you are signed in, Copilot shows as ready and Chat accepts questions.
 
 :::{note}
 Signing in does not give you more than your GitHub plan allows. A free account works, with the
