@@ -12,8 +12,6 @@ Copilot extension installed. All you need is a GitHub account.
    version, and either works:
    - the **Copilot** icon labeled **Sign In** at the bottom-right of the window
    - the **Accounts** icon at the bottom-left of the window
-3. Choose the option to sign in with GitHub.
-4. Your browser opens a GitHub page. Sign in and click **Authorize**.
 
 :::{figure} ../images/copilot-sign-in-status-bar.png
 :alt: The VS Code status bar at the bottom-right showing a Copilot icon with the label Sign In.
@@ -25,6 +23,48 @@ The **Sign In** button next to the Copilot icon in the bottom-right status bar.
 :alt: The Accounts icon, a person in a circle, above the gear icon at the bottom-left of VS Code.
 
 The **Accounts** icon, the person above the gear at the bottom-left.
+:::
+
+3. Choose the option to sign in with GitHub. VS Code shows a one-time code. Click
+   **Copy & Continue to Browser**.
+
+:::{figure} ../images/copilot-sign-in-code.png
+:alt: A VS Code dialog showing a one-time code and a Copy & Continue to Browser button.
+
+VS Code shows a one-time code and copies it for you.
+:::
+
+4. VS Code asks whether to open an external website. Click **Open**.
+
+:::{figure} ../images/copilot-sign-in-open-site.png
+:alt: A dialog asking whether code-server may open the GitHub device login page, with an Open button.
+
+Allow the GitHub login page to open.
+:::
+
+5. On the GitHub page, check that it says you are signed in as the right account, then click
+   **Continue**.
+
+:::{figure} ../images/copilot-sign-in-continue.png
+:alt: The GitHub Device Activation page showing the signed-in username and a green Continue button.
+
+Confirm the GitHub account and click **Continue**.
+:::
+
+6. Paste the one-time code that VS Code copied, then click **Continue**.
+
+:::{figure} ../images/copilot-sign-in-enter-code.png
+:alt: The GitHub page with eight boxes for the one-time device code and a green Continue button.
+
+Paste the code into the boxes.
+:::
+
+7. Click **Authorize Visual-Studio-Code**. Return to the VS Code tab.
+
+:::{figure} ../images/copilot-sign-in-authorize.png
+:alt: The GitHub authorization page with a Cancel button and a green Authorize Visual-Studio-Code button.
+
+Authorize VS Code to use your GitHub account.
 :::
 
 Once you are signed in, Copilot shows as ready and Chat accepts questions.
@@ -74,12 +114,21 @@ submitting anything Copilot wrote.
 Chat does not have to stay in the side bar. To get a full-size Chat in an editor tab, the way the
 Claude Code extension works:
 
-1. Click the **New Chat (+)** button at the top of the Chat window.
-2. Choose **New Chat Editor**.
+1. Open the Command Palette with {kbd}`Ctrl+Shift+P` ({kbd}`Cmd+Shift+P` on a Mac).
+2. Type `New Chat`.
+3. Choose one of the Chat commands:
+   - **Chat: New Chat Editor** opens Chat as a tab in the main editing area.
+   - **Chat: New Chat Editor to the Side** opens it as a tab beside the file you are editing.
+   - **Chat: New Chat Window** opens it in a separate window.
 
-You can also open the Command Palette ({kbd}`Ctrl+Shift+P`) and run **Chat: New Chat Editor**.
-The chat opens as a tab you can drag beside your code, split, or leave full width. **Chat: New
-Chat Window** opens it in a separate window instead.
+:::{figure} ../images/copilot-new-chat-palette.png
+:alt: The VS Code Command Palette filtered to New Chat, listing New Chat Editor, New Chat Editor to the Side and New Chat Window.
+
+The New Chat commands in the Command Palette.
+:::
+
+The chat opens as a tab you can drag, split, or leave full width. The **New Chat (+)** button at
+the top of the Chat window has the same options.
 
 :::{figure} ../images/copilot-chat-editor.png
 :alt: Copilot Chat open as a tab in the main editor area, split beside a Python file.
