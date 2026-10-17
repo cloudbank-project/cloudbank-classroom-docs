@@ -32,6 +32,7 @@ project:
     - title: AI Tools
       children:
         - file: ai-tools/jupyter-ai.md
+        - file: ai-tools/github-copilot.md
         - file: ai-tools/jupytutor.md
     - file: best-practices/index.md
       children:
