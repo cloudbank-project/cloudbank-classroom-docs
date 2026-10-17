@@ -76,13 +76,14 @@ limits listed in [Plans and pricing](#copilot-plans).
 
 ## Open the Chat window
 
-Click the **Chat** icon at the top of the window, or press {kbd}`Ctrl+Alt+I`
-({kbd}`Ctrl+Cmd+I` on a Mac). The Chat window opens in the **Secondary Side Bar** on the right.
+Press {kbd}`Ctrl+Alt+I` ({kbd}`Ctrl+Cmd+I` on a Mac), or open the Command Palette and run
+**Chat: Open Chat**. The Chat window opens in the **Secondary Side Bar** on the right, with your
+earlier conversations listed under **Sessions**.
 
 :::{figure} ../images/copilot-chat-open.png
-:alt: VS Code with the Copilot Chat window open on the right-hand side next to a Python file.
+:alt: VS Code with the Chat window open on the right-hand side, listing two earlier sessions above an input box that reads Describe what to build.
 
-Chat opens on the right, next to your code.
+Chat opens on the right, with past sessions listed above the input box.
 :::
 
 ## Use Chat
@@ -94,8 +95,9 @@ Type a question in the box at the bottom of the Chat window and press {kbd}`Ente
 - **Explain an error.** Paste the error message, or ask "why did this cell fail?"
 - **Ask for changes.** Describe what you want ("add a docstring to this function") and Chat
   proposes an edit you can accept or reject.
-- **Pick a mode.** The dropdown beside the input switches between asking questions and letting
-  Copilot make edits across your files. Use the question mode if you only want an explanation.
+- **Pick a mode.** The mode picker below the input box, labeled **Agent** by default, controls how
+  Copilot works. Agent mode can make edits across your files, so switch to a question-only mode
+  if you just want an explanation.
 
 :::{figure} ../images/copilot-chat-answer.png
 :alt: A Copilot Chat conversation explaining a Python error, with the suggested fix shown as a code block.
@@ -130,10 +132,18 @@ The New Chat commands in the Command Palette.
 The chat opens as a tab you can drag, split, or leave full width. The **New Chat (+)** button at
 the top of the Chat window has the same options.
 
-:::{figure} ../images/copilot-chat-editor.png
-:alt: Copilot Chat open as a tab in the main editor area, split beside a Python file.
+**New Chat Window** opens Chat in its own window, which you can move to a second screen.
 
-Chat as an editor tab, next to a file.
+:::{figure} ../images/copilot-chat-window.png
+:alt: A small separate window titled Chat showing the Copilot Chat input box, floating over VS Code.
+
+Chat in its own window.
+:::
+
+:::{figure} ../images/copilot-chat-editor.png
+:alt: Copilot Chat open as a tab named Chat in the main editor area, next to the Explorer file list.
+
+Chat as a tab in the main editing area, with the file Explorer still on the left.
 :::
 
 (copilot-plans)=
