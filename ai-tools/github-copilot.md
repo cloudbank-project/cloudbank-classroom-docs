@@ -100,9 +100,9 @@ Type a question in the box at the bottom of the Chat window and press {kbd}`Ente
   if you just want an explanation.
 
 :::{figure} ../images/copilot-chat-answer.png
-:alt: A Copilot Chat conversation explaining a Python error, with the suggested fix shown as a code block.
+:alt: A Chat conversation in which the question "I am working on learning datascience - what is the first step" is answered with a five-step numbered list, followed by thumbs up, thumbs down and copy buttons.
 
-Chat explaining an error and suggesting a fix.
+A question and Copilot's answer. The buttons under the answer let you copy it, rate it, or regenerate it.
 :::
 
 :::{warning}
