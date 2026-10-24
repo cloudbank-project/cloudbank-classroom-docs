@@ -21,6 +21,7 @@ project:
         - file: environments/gpu.md
         - file: environments/packages.md
         - file: environments/limits.md
+        - file: environments/terminal.md
     - title: Files and Data
       children:
         - file: files/loading-files.md

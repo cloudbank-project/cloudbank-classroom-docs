@@ -28,8 +28,8 @@ outgrows it.
 2. **Make yourself the project lead.** For a classroom allocation this is the instructor teaching
    the course.
 3. **Prepare the request.** You need a project title and an overview describing your goals, how you
-   expect to use the resources, and any software you need. You also attach two PDFs: **a CV or a
-   résumé** for the project lead and any co-leads, and a course syllabus for classroom work. Grant
+   expect to use the resources, and any software you need. You also attach two PDFs: **your CV or
+   resume**, and a course syllabus for classroom work. Grant
    details are optional.
 
    :::{note}
