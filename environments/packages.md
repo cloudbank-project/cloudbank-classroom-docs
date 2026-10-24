@@ -44,22 +44,6 @@ pip install --user <package>
 This lands in `~/.local`, which is part of your home directory, so it persists across sessions and
 survives your server restarting. Restart the kernel afterwards so the running notebook picks it up.
 
-For R it takes a one-time setup. Out of the box, `install.packages()` puts packages in the image,
-not your home directory, so they are gone the next time your server starts. To fix that, run this
-once from an R console:
-
-```r
-dir.create("~/R/library", recursive = TRUE, showWarnings = FALSE)
-cat('.libPaths(c("~/R/library", .libPaths()))\n', file = "~/.Rprofile", append = TRUE)
-```
-
-Restart R (in RStudio, **Session > Restart R**). From then on a normal install goes into your home
-directory and stays there:
-
-```r
-install.packages("<package>")
-```
-
 :::{warning}
 A `--user` install belongs to you alone. Your students will not have it, so it is not a way to
 distribute a package to a class — if an assignment needs it, it has to go in the image.
