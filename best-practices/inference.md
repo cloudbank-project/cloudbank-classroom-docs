@@ -1,8 +1,8 @@
 # Setting Up Inference
 
 Running a language model on the hub means a [GPU hub](../environments/gpu.md) and the small-models
-workshop image. This page covers choosing a model that fits, where to put the weights, and the one
-behaviour of shared GPUs that catches people out.
+workshop image. This page covers choosing a model that fits, where to put the weights, and how a shared GPU can
+run out of memory when two people use it at once.
 
 ## The thing to know first
 
@@ -19,7 +19,7 @@ testing and breaks the moment a second student loads anything.
 :::
 
 `nvidia-smi` in a terminal shows what is actually allocated on the card, including the other
-session's usage.
+session's usage. [Using the Terminal](../environments/terminal.md) shows how to open one.
 
 ## Use GGUF, not full weights
 

@@ -40,11 +40,32 @@ Common causes, roughly in order:
 
 ## Working inside the limit
 
-Read only the columns you need with `usecols=`, and sample large files with `nrows=` while you are
-still developing. Delete large intermediates with `del` once you are finished with them. Restart
-the kernel before a final run so you are not carrying objects from earlier experiments.
+Read only the columns you need with `usecols=`:
 
-If a dataset genuinely does not fit, that is worth raising rather than working around — see below.
+```python
+import pandas as pd
+
+trips = pd.read_csv("trips.csv", usecols=["start_time", "duration", "station"])
+```
+
+Sample a large file with `nrows=` while you are still developing, and drop it when the code works:
+
+```python
+sample = pd.read_csv("trips.csv", nrows=10_000)
+```
+
+Delete large intermediates with `del` once you are finished with them:
+
+```python
+merged = trips.merge(stations, on="station")
+summary = merged.groupby("station")["duration"].mean()
+del merged
+```
+
+Restart the kernel (**Kernel > Restart Kernel**) before a final run so you are not carrying objects
+from earlier experiments.
+
+If a dataset still does not fit, ask for more rather than working around it; see below.
 
 ## Asking for more
 

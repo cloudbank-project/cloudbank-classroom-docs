@@ -1,8 +1,10 @@
 # Loading Files onto the Hub
 
 [nbgitpuller](https://nbgitpuller.readthedocs.io/) gives a whole class a copy of your materials from
-one link. A student clicks it, the files land in their own space on the hub, and the notebook you
-pointed at opens. Nobody needs to know git.
+one link. A student clicks it, the files are copied into their own storage on the hub's disk, and
+the notebook you pointed at opens. Nobody needs to know git. The easiest way to make the link is the
+[DataHub Link Generator](https://chromewebstore.google.com/detail/datahub-link-generator/ijbgangngghdanhcnaliiobbiffocahf)
+Chrome extension; see [Generate a link](#generate-a-link).
 
 Setting this up takes two things: your materials in a public GitHub repository, and a link that
 points at them.
@@ -128,7 +130,7 @@ rather than generating a new one.
 
 ## What happens when a student clicks
 
-The whole repository copies into the student's space, and then the file named in `urlpath` opens.
+The whole repository copies into the student's own storage, and then the file named in `urlpath` opens.
 They get everything, not just the one notebook, which is why the data files an assignment needs
 should sit in the repository beside it.
 
@@ -151,5 +153,7 @@ Send the same link again later and nbgitpuller merges rather than overwrites:
 
 If a link does not behave the way you expect, [getting help](../getting-help.md) covers where to ask.
 
-To skip the server options page as well, so students go from the link straight into a running
-server, see [Autostart Links](autostart-links.md).
+If your hub uses profiles, students see a Server Options page (CPU only or GPU, and an image)
+before the link runs. To skip that page as well, so students go from the link straight into a
+running server, see [Autostart Links](autostart-links.md), which shows the page and how profiles
+work.

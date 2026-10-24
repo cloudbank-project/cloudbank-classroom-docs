@@ -5,9 +5,10 @@ needs one — computer vision, deep learning, and similar. This page covers what
 for, how to get it, and what's expected of you once you do.
 
 :::{important}
-GPU support is a **pilot service**, not a fixed guarantee. Capacity, cost limits, and the details
-on this page are still being tuned as we learn how courses actually use it. If something here
-changes, [Getting Help](../getting-help.md) is where you'll hear about it.
+GPU support is a **pilot service**, not a fixed guarantee. We are still adjusting capacity, cost
+limits, and the details on this page as we learn how courses use it. When something changes, we
+will update this page and post it to the CloudBank affinity group listed on
+[Getting Help](../getting-help.md).
 :::
 
 ## Who it's for
@@ -63,9 +64,9 @@ To get the picker back, stop the server you already have:
 The picker appears on that second start.
 
 :::{note}
-This tends to catch a class out at the beginning of a lab: everyone logged in on CPU earlier in the
-week, those sessions are still up, and nobody sees the GPU option. Stopping the server is the whole
-fix — it isn't a problem with the hub's GPU access.
+This happens a lot at the start of a GPU lab. Students logged in on CPU earlier in the week, those
+servers are still running, and no one sees the GPU option. Stopping the server fixes it; nothing is
+wrong with the hub's GPU access.
 :::
 
 ## Startup time: why it isn't always instant
@@ -74,14 +75,14 @@ The GPU profile can start in under 30 seconds, or take several minutes. Both are
 difference comes down to whether a GPU machine is already running:
 
 - **A machine that's already up** just needs to start your image, which is fast.
-- **A brand-new GPU machine** needs its NVIDIA driver installed before it can run anything — that
-  alone can take up to about 10 minutes on a fresh machine. The GPU image itself downloads onto the
-  machine in parallel, and that part typically finishes in about 5 minutes, so the driver install is
-  usually what you're waiting on, not the image.
+- **A brand-new GPU machine** has to start up, install its NVIDIA driver, and download the GPU
+  image before your server can run. That takes about 7 to 10 minutes, and almost all of it is the
+  image download: the GPU image is about 17 GB. The second student on the same machine usually
+  starts much faster, because the image is already there.
 
 :::{note}
-If your login is taking a few minutes, it's very likely a new GPU machine coming online, not a
-stuck session. Give it up to about 15–20 minutes before assuming something is actually wrong.
+If your login is taking a few minutes, a new GPU machine is probably coming online. Give it about
+10 minutes before assuming something is wrong.
 :::
 
 If you know in advance when your class needs GPUs — a specific lab session, a recurring class
@@ -115,10 +116,16 @@ This is worth building into your course's routine — asking students to stop th
 end of a lab, not just close the browser tab, is one of the simplest ways to keep GPU capacity
 available for everyone sharing it.
 
-You don't have to rely on remembering, though: a session shuts down on its own after **one hour
-with no activity**, and after **12 hours total**, even if it's in the middle of a long-running
-process. Save your work accordingly — a training run or job that needs longer than 12 hours
-straight won't be able to finish in one session.
+You don't have to rely on remembering, though. A GPU hub shuts a server down on its own:
+
+- **one hour** after you close the browser tab, if nothing is running;
+- **about two hours** after you stop running code, even with the tab still open. An idle notebook
+  kernel is stopped after an hour, and the server shuts down an hour after its last kernel stops;
+- after **12 hours total**, even in the middle of a long-running process.
+
+Save your work as you go. If your course needs jobs that run longer than this, CloudBank has other
+resources better suited to long-running work. [Contact us](../getting-help.md) and we will help you
+find the right one.
 
 ## Packages
 
