@@ -42,17 +42,21 @@ page. Have these ready:
    school email address. Gmail, Yahoo and other personal addresses won't work. If you have an old
    XSEDE account, you can use it.
 2. Verify your email. The code comes from **registry@cilogon.org**, so check your spam folder if
-   you don't see it. After that, ACCESS asks how you want to sign in. If your school uses
-   Microsoft for email, or you don't see your school in the list, choose **register without an
-   existing identity**. You will set an ACCESS password and set up Duo on your phone.
-3. Fill in the registration information and accept the acceptable use policy. Make sure you fill
-   in **Country of residence**, **Citizenship** and **Academic status**.
-4. Follow the [instructions to log in and set up your new account](https://operations.access-ci.org/identity/new-user-setup).
+   you don't see it.
+3. Fill in the registration form:
+   - **Institution:** pick your school from the list. If it isn't there, use the **organization
+     request form** link under the field, or let us know.
+   - **Department**, **Academic Status**, **Country of Residence** and **Country of Citizenship**.
+   - **Password:** this is your ACCESS password. It needs 12 to 64 characters and three of these:
+     lowercase letters, uppercase letters, numbers, and symbols.
+4. Accept the acceptable use policy, then follow the
+   [instructions to log in and set up your new account](https://operations.access-ci.org/identity/new-user-setup).
+   You will set up Duo on your phone the first time you log in.
 
 :::{note}
-When you log in, CILogon asks you to pick an identity provider. If you registered without an
-existing identity, choose **ACCESS CI (XSEDE)** and use your ACCESS ID and password. You don't need
-your school login.
+When you log in, CILogon asks you to pick an identity provider. Choose **ACCESS CI (XSEDE)** and use
+your ACCESS ID and the password you just made. Don't pick your school, Google, or Microsoft. You
+don't need your school login.
 :::
 
 :::{figure} images/access-cilogon-access-ci.png
@@ -107,8 +111,10 @@ Explore allocations last **one year**. Submit a renewal before it expires. See t
 
 These are the problems we see most often.
 
-**Your school's email domain isn't recognized.** You get an *Unknown Email Domain* error. ACCESS
-has to add your domain, which takes a support ticket. Let us know and we will open one.
+**Your school isn't recognized.** You get an *Unknown Email Domain* error, or your school isn't in
+the Institution list. ACCESS has to add it, which usually takes 1 to 2 days. Use the
+**organization request form** link under the Institution field, or let us know and we will open a
+ticket.
 
 **The verification email never shows up.** It comes from **registry@cilogon.org**. Check your spam
 folder. Some schools block this address, so if it isn't there, ask your IT department to allow it,
