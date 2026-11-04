@@ -8,8 +8,8 @@ Copilot extension installed. All you need is a GitHub account.
 ## Sign in to GitHub
 
 1. Open VS Code from the JupyterHub launcher.
-2. Look for the sign-in in both of these places. Which one you see depends on your VS Code
-   version, and either works:
+2. Look for the sign-in in one of these places. It depends on your VS Code version, and either
+   works:
    - the **Copilot** icon labeled **Sign In** at the bottom-right of the window
    - the **Accounts** icon at the bottom-left of the window
 
@@ -70,8 +70,8 @@ Authorize VS Code to use your GitHub account.
 Once you are signed in, Copilot shows as ready and Chat accepts questions.
 
 :::{note}
-Signing in does not give you more than your GitHub plan allows. A free account works, with the
-limits listed in [Plans and pricing](#copilot-plans).
+You get what your GitHub plan includes. A free account works, with the limits listed in
+[Plans and pricing](#copilot-plans).
 :::
 
 ## Open the Chat window
@@ -113,8 +113,8 @@ submitting anything Copilot wrote.
 
 ## Move Chat into the main editing area
 
-Chat does not have to stay in the side bar. To get a full-size Chat in an editor tab, the way the
-Claude Code extension works:
+Chat doesn't have to stay in the side bar. To open it as a full-size editor tab, like the Claude
+Code extension:
 
 1. Open the Command Palette with {kbd}`Ctrl+Shift+P` ({kbd}`Cmd+Shift+P` on a Mac).
 2. Type `New Chat`.
