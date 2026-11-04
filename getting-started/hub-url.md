@@ -15,4 +15,4 @@ If you are unsure on your campus's short name, find your institution below.
 :::{include} _hub-table.md
 :::
 
-If your institution is not listed, [getting help](../getting-help.md) covers where to ask.
+If your institution isn't listed, see [Getting help](../getting-help.md).
