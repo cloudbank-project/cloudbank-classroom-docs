@@ -38,13 +38,21 @@ page. Have these ready:
 
 ## Step 1: Create an ACCESS account and log in
 
-1. Go to the [ACCESS user registration page](https://operations.access-ci.org/identity/new-user)
-   and enter your school email address. Gmail, Yahoo and other personal addresses won't work. If
-   you have an old XSEDE account, you can use it.
-2. Follow the prompts: verify your email, fill in the registration information, and accept the
-   acceptable use policy. Make sure you fill in **Country of residence**, **Citizenship** and
-   **Academic status**.
-3. Follow the [instructions to log in and set up your new account](https://operations.access-ci.org/identity/new-user-setup).
+1. Go to the [ACCESS registration page](https://account.access-ci.org/register) and enter your
+   school email address. Gmail, Yahoo and other personal addresses won't work. If you have an old
+   XSEDE account, you can use it.
+2. Verify your email. After that, ACCESS asks how you want to sign in. If your school uses
+   Microsoft for email, or you don't see your school in the list, choose **register without an
+   existing identity**. You will set an ACCESS password and set up Duo on your phone.
+3. Fill in the registration information and accept the acceptable use policy. Make sure you fill
+   in **Country of residence**, **Citizenship** and **Academic status**.
+4. Follow the [instructions to log in and set up your new account](https://operations.access-ci.org/identity/new-user-setup).
+
+:::{note}
+When you log in, CILogon asks you to pick an identity provider. If you registered without an
+existing identity, choose **ACCESS CI (XSEDE)** and use your ACCESS ID and password. You don't need
+your school login.
+:::
 
 :::{figure} images/access-step1-cloudbank.png
 :alt: Step 1 on the CloudBank ACCESS page, linking to the ACCESS user registration page and the new-account setup instructions, with a reminder to fill in country of residence, citizenship and academic status.
