@@ -55,10 +55,10 @@ existing identity, choose **ACCESS CI (XSEDE)** and use your ACCESS ID and passw
 your school login.
 :::
 
-:::{figure} images/access-step1-cloudbank.png
-:alt: Step 1 on the CloudBank ACCESS page, linking to the ACCESS user registration page and the new-account setup instructions, with a reminder to fill in country of residence, citizenship and academic status.
+:::{figure} images/access-cilogon-access-ci.png
+:alt: The CILogon Select an Identity Provider screen with ACCESS CI (XSEDE) chosen in the dropdown, a Remember this selection checkbox, and a Log On button.
 
-Step 1 on the CloudBank page.
+Choose **ACCESS CI (XSEDE)**, then click **Log On**.
 :::
 
 ## Step 2: Request an Explore ACCESS project
@@ -85,12 +85,6 @@ Step 1 on the CloudBank page.
    - **Available Resources:** check **CloudBank Classroom**, then fill in your institution name,
      the estimated number of students, and the dates of your classes.
 4. Click **Submit**. You will see a summary page and get a confirmation email.
-
-:::{figure} images/access-step2-cloudbank.png
-:alt: Step 2 on the CloudBank ACCESS page, listing the form fields: title, public overview, keywords, how you plan to use the project, fields of science, documents, and available resources.
-
-Step 2 on the CloudBank page.
-:::
 
 :::{warning}
 Someone at ACCESS reads the public overview, and a short one is the most common reason a request
