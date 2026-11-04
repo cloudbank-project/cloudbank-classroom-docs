@@ -2,12 +2,11 @@
 
 [nbgitpuller](https://nbgitpuller.readthedocs.io/) gives a whole class a copy of your materials from
 one link. A student clicks it, the files are copied into their own storage on the hub's disk, and
-the notebook you pointed at opens. Nobody needs to know git. The easiest way to make the link is the
+the notebook you picked opens. Nobody needs to know git. The easiest way to make the link is the
 [DataHub Link Generator](https://chromewebstore.google.com/detail/datahub-link-generator/ijbgangngghdanhcnaliiobbiffocahf)
-Chrome extension; see [Generate a link](#generate-a-link).
+Chrome extension. See [Generate a link](#generate-a-link).
 
-Setting this up takes two things: your materials in a public GitHub repository, and a link that
-points at them.
+You need two things: your materials in a public GitHub repository, and a link to them.
 
 ## Put your materials in a public repo
 
@@ -36,8 +35,8 @@ Add your notebooks and data files with **Add file**, then **Upload files**.
 Upload your materials into the repository once it exists.
 :::
 
-Give some thought to the layout. The Data 8 materials keep `hw`, `lab`, `lectures`, and `project` at
-the top level, with each assignment in its own folder next to the data files it needs.
+Plan your folders. The Data 8 materials keep `hw`, `lab`, `lectures`, and `project` at the top
+level, with each assignment in its own folder next to the data files it needs.
 
 :::{figure} ../images/public-repo.png
 :alt: The materials-fds-v2 repository on GitHub, marked Public, with hw, lab, lectures, and project folders listed at the top level.
@@ -46,15 +45,14 @@ the top level, with each assignment in its own folder next to the data files it 
 example of a layout that stays predictable across a term.
 :::
 
-A consistent layout pays off later, because it makes your links regular enough to edit by hand.
+If your folders follow a pattern, you can edit your links by hand later.
 
 ## Generate a link
 
 We recommend the
 [DataHub Link Generator](https://chromewebstore.google.com/detail/datahub-link-generator/ijbgangngghdanhcnaliiobbiffocahf)
-Chrome extension. nbgitpuller also publishes a
-[link generator form](https://nbgitpuller.readthedocs.io/en/latest/link.html) if you would rather not
-install anything.
+Chrome extension. If you don't want to install anything, nbgitpuller also has a
+[link generator form](https://nbgitpuller.readthedocs.io/en/latest/link.html).
 
 Open the notebook you want students to land on, on GitHub, then click the extension from the puzzle
 icon in your browser toolbar. It reads the repository, branch, and file path from the page you are
@@ -66,8 +64,8 @@ looking at.
 The extension fills in the repository and file path from whichever page you have open.
 :::
 
-Enter your hub address in **JupyterHub URL**. [Hub URL](../getting-started/hub-url.md) covers where
-to find yours. Then choose what students should open in.
+Enter your hub address in **JupyterHub URL**. See [Hub URL](../getting-started/hub-url.md) to find
+yours. Then choose what students should open in.
 
 :::{figure} ../images/nbgitpuller-panel.png
 :alt: The extension panel with the Open in dropdown expanded, listing Classic Notebook, JupyterLab, Shiny, RStudio, and VSCode.
@@ -76,16 +74,15 @@ Five targets are available. Classic Notebook opens the notebook by itself, and J
 with the file browser alongside.
 :::
 
-Choose **Copy nbgitpuller link** and share it however your course reaches students.
+Click **Copy nbgitpuller link** and send it to your students.
 
 ### Landing students in a folder instead of a notebook
 
-Generating the link from a notebook page sends students straight to that notebook. Sometimes you
-want them in a folder instead — a whole lab with its data files, say, where they pick the file
-themselves.
+A link made from a notebook page opens that notebook. Sometimes you want students to land in a
+folder instead, like a lab folder with its data files, and pick the file themselves.
 
-Open the **folder** on GitHub rather than a notebook, then use the extension the same way. It reads
-the path from whichever page you are on, so a folder page produces a folder link.
+Open the **folder** on GitHub instead of a notebook, then use the extension the same way. A folder
+page gives you a folder link.
 
 If you already have a notebook link, you can shorten it by hand. Delete the file name from the end
 of `urlpath`, leaving the folder:
@@ -99,8 +96,8 @@ What students see on arrival depends on the target you picked in **Open in**: Ju
 folder in the file browser, and Classic Notebook shows a directory listing.
 
 :::{note}
-The whole repository is copied either way. `urlpath` only decides where the student lands once the
-copy finishes, so a folder link is not a way to give students part of a repository.
+The whole repository is copied either way. `urlpath` only decides where the student lands, so a
+folder link doesn't give students just part of a repository.
 :::
 
 ## What the link contains
@@ -120,19 +117,19 @@ https://datahub.berkeley.edu/hub/user-redirect/git-pull?repo=https%3A%2F%2Fgithu
 | `urlpath=` | The file to open once the copy finishes |
 
 :::{warning}
-The example above sends students to `datahub.berkeley.edu`, so only people with Berkeley accounts can
-sign in to it. Put your own hub address in that position and the same link works for your course.
+The example above goes to `datahub.berkeley.edu`, so only people with Berkeley accounts can sign
+in. Put your own hub address there and the same link works for your course.
 :::
 
-The `urlpath` records where you were when you generated the link, so a link made from HW01 opens
-HW01. If your repository has a consistent layout, you can copy a link and change `hw01` to `hw02`
-rather than generating a new one.
+The `urlpath` is the page you were on when you made the link, so a link made from HW01 opens HW01.
+If your folders follow a pattern, you can copy a link and change `hw01` to `hw02` instead of making
+a new one.
 
 ## What happens when a student clicks
 
-The whole repository copies into the student's own storage, and then the file named in `urlpath` opens.
-They get everything, not just the one notebook, which is why the data files an assignment needs
-should sit in the repository beside it.
+The whole repository copies into the student's storage, then the file in `urlpath` opens. They
+get everything, not just one notebook, so put an assignment's data files next to it in the
+repository.
 
 :::{figure} ../images/datahub.png
 :alt: Homework 1 open in the Classic Notebook interface, at a hub address under the signed-in user's own account showing the materials-fds-v2 repository path.
@@ -141,19 +138,18 @@ Where the link above lands. The repository now sits in the student's own space, 
 Classic Notebook, the target chosen when the link was made.
 :::
 
-Send the same link again later and nbgitpuller merges rather than overwrites:
+If you send the same link again later, nbgitpuller merges your changes. It doesn't overwrite the
+student's work:
 
 - Files a student never touched pick up your changes.
 - Where you both edited the same file in different places, both sets of edits survive.
 - Where you both changed the same lines, the student's version wins.
-- A student who deletes a file gets your copy back on the next click, which is how they start a
+- A student who deletes a file gets your copy back on the next click. That is how they start a
   question over.
-- If a merge cannot be resolved, their work is copied to a backup folder before the fresh pull, so
-  nothing is lost.
+- If a merge can't be worked out, their work is copied to a backup folder first, so nothing is
+  lost.
 
-If a link does not behave the way you expect, [getting help](../getting-help.md) covers where to ask.
+If your hub has server options, students see a Server Options page (CPU or GPU, and an image)
+before the link runs. To skip that page too, see [Autostart Links](autostart-links.md).
 
-If your hub uses profiles, students see a Server Options page (CPU only or GPU, and an image)
-before the link runs. To skip that page as well, so students go from the link straight into a
-running server, see [Autostart Links](autostart-links.md), which shows the page and how profiles
-work.
+Questions? See [Getting help](../getting-help.md).

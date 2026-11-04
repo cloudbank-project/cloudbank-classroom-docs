@@ -15,8 +15,8 @@ autostart link skips the page. The student signs in and their server starts with
 image you chose.
 
 :::{note}
-Autostart needs a hub running jupyterhub-fancy-profiles 0.7.0 or newer. A link made for a hub that
-does not have it still signs the student in, but they will see the options page as usual.
+Autostart needs jupyterhub-fancy-profiles 0.7.0 or newer on the hub. On a hub without it, the link
+still signs the student in, but they see the options page as usual.
 :::
 
 ## Make a link
@@ -37,18 +37,16 @@ does not have it still signs the student in, but they will see the options page 
 | Permalink only | Signs the student in and starts their server with the image your permalink includes |
 | Permalink and nbgitpuller link | Signs in, starts the server with the image your permalink includes, then pulls your repository and opens the file you chose |
 
-With the permalink alone you get the same link the hub gave you. The only change is that automatic
-start is switched on. The **Copy Permalink** button always writes it with autostart set to false,
-and the link builder sets it to true.
+With the permalink alone you get the same link the hub gave you, with autostart turned on. **Copy
+Permalink** always sets autostart to false, and the link builder changes it to true.
 
 ## Things to know
 
-- **Both links have to be for the same hub.** The builder refuses a pair that point at different
+- **Both links have to be for the same hub.** The builder won't make a link from two different
   hubs.
 - **A student who already has a server running** goes straight to the pull, or straight to their
-  server, without starting a second one. A student who needs to switch between GPU and CPU
-  machines should first choose **File > Hub Control Panel** and press **Stop Server**, then use
-  the link.
+  server. It doesn't start a second one. To switch between GPU and CPU, the student should go to
+  **File > Hub Control Panel**, click **Stop My Server**, then use the link.
 - **Try it first.** The builder's **Try it** button opens the link in a new tab.
 
-If a link does not behave the way you expect, [getting help](../getting-help.md) covers where to ask.
+Questions? See [Getting help](../getting-help.md).
