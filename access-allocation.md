@@ -42,7 +42,8 @@ page. Have these ready:
    school email address. Gmail, Yahoo and other personal addresses won't work. If you have an old
    XSEDE account, you can use it.
 2. Verify your email. The code comes from **registry@cilogon.org**, so check your spam folder if
-   you don't see it.
+   you don't see it. If ACCESS then offers to sign you in with your school and your school uses
+   Microsoft, don't use it. Choose the option to create an ACCESS password instead.
 3. Fill in the registration form:
    - **Institution:** pick your school from the list. If it isn't there, use the **organization
      request form** link under the field, or let us know.
