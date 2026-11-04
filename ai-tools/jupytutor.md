@@ -2,20 +2,18 @@
 
 [JupyTutor](https://github.com/team-jupytutor/jupytutor) is a JupyterLab extension that gives
 students feedback on their autograder results. When a student runs a grader cell, a chat panel
-appears under the output with a few suggested questions and a box for their own. Because JupyTutor
-reads the notebook around that cell, its answers refer to the actual question and the actual test
-that failed.
+appears under the output with a few suggested questions and a box for their own. JupyTutor reads
+the notebook around that cell, so its answers are about that question and the test that failed.
 
 ## What it needs
 
-Two things have to be in place, and nothing appears if either is missing:
+You need both of these, or nothing shows up:
 
-1. The extension installed on the hub, from the `jupytutor` package.
-2. Notebooks carrying JupyTutor metadata, which decides where the panel shows up and what it offers.
+1. The `jupytutor` extension installed on the hub.
+2. Notebooks with JupyTutor metadata, which decides where the panel shows up and what it offers.
 
-JupyTutor is not installed on CloudBank hubs today. Setting it up takes more than adding a package,
-so talk to CloudBank before you plan a course around it. [Getting help](../getting-help.md) covers
-how to reach us.
+JupyTutor isn't installed on CloudBank hubs yet. It takes more than adding a package, so talk to us
+before you plan a course around it. See [Getting help](../getting-help.md).
 
 ## Using it
 
@@ -34,7 +32,7 @@ The panel opens whether or not the tests passed, and the suggested questions cha
 | Some tests failed | Explain this error. / Provide a concise list of important review materials. / What progress have I made so far? |
 | All tests passed | I still don't feel confident in my answer. / Provide me three important review materials. / Can I make further improvements? |
 
-Ignore the suggestions and type your own question if you would rather.
+Students can also type their own question.
 
 ## What JupyTutor can see
 
@@ -53,14 +51,14 @@ the textbook section on conditional statements.
 Replies are framed as hints and point back at the course textbook.
 :::
 
-Answers are written as hints rather than finished code, and the student can keep asking follow-up
-questions in the same panel.
+Answers are hints, not finished code, and the student can keep asking questions in the same
+panel.
 
 ## Notebook metadata
 
-A notebook opts in through a `jupytutor` block in its metadata. Chat stays off everywhere until a
-rule turns it on, so each rule describes a situation and what to offer in it. This one covers a code
-cell that raised an error:
+A notebook turns JupyTutor on with a `jupytutor` block in its metadata. Chat is off until a rule
+turns it on. Each rule says when to show the panel and what to offer. This one is for a code cell
+that raised an error:
 
 ```json
 {
@@ -74,15 +72,13 @@ cell that raised an error:
 }
 ```
 
-The same block controls which sites JupyTutor may follow for context, which is how the textbook
-links above work. For a working reference, read the metadata in any Data 8 v2 notebook rather than
-writing a set of rules from scratch.
+The same block lists which sites JupyTutor can read, which is how the textbook links above work.
+Start from the metadata in any Data 8 v2 notebook instead of writing your own rules.
 
 ## Data 8 materials
 
-[Data 8 Spring 2026 materials](https://github.com/data-8/materials-fds-v2) already carry JupyTutor
-metadata, so adopting them is the shortest path to a working setup. JupyTutor integration is a
-version 2 feature and is not in version 1.
+The [Data 8 Spring 2026 materials](https://github.com/data-8/materials-fds-v2) already have
+JupyTutor metadata, so they are the easiest way to start. Only version 2 has it, not version 1.
 
 The [Data 8 adoption guide](https://ucb-dsus-adopters.github.io/courses/data8/adoption/) walks
 through forking the materials, requesting instructor access, setting up the Canvas shell, and

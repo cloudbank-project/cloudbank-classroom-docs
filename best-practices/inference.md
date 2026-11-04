@@ -1,45 +1,43 @@
 # Setting Up Inference
 
-Running a language model on the hub means a [GPU hub](../environments/gpu.md) and the small-models
-workshop image. This page covers choosing a model that fits, where to put the weights, and how a shared GPU can
-run out of memory when two people use it at once.
+To run a language model on the hub, you need a [GPU hub](../environments/gpu.md) and the
+small-models workshop image. This page covers picking a model that fits, where to put the files,
+and why a shared GPU can run out of memory when two people use it.
 
-## The thing to know first
+## Read this first
 
-A T4 is shared between **two people at a time**, and its 16GB of VRAM is **not partitioned**. Both
-sessions allocate from the same pool.
+A T4 is shared by **two people at a time**, and its 16 GB of memory is **not split** between them.
+Both people use the same memory.
 
-In practice that means a model which loads perfectly when you test it alone can fail for a student
-when someone else is also working. The failure is a CUDA out-of-memory error, and it will look like
-your code is broken when nothing has changed.
+So a model that loads fine when you test it alone can fail for a student when someone else is
+using the same GPU. The error is CUDA out of memory, and it looks like the code is broken even
+though nothing changed.
 
 :::{warning}
-Size your model so that **two copies fit in 16GB**, not one. A model using 14GB works flawlessly in
-testing and breaks the moment a second student loads anything.
+Pick a model small enough that **two copies fit in 16 GB**. A model that uses 14 GB works when you
+test it and breaks as soon as a second student loads anything.
 :::
 
-`nvidia-smi` in a terminal shows what is actually allocated on the card, including the other
-session's usage. [Using the Terminal](../environments/terminal.md) shows how to open one.
+Run `nvidia-smi` in a terminal to see what is using the GPU, including the other person's session.
+See [Using the Terminal](../environments/terminal.md) for how to open one.
 
-## Use GGUF, not full weights
+## Use GGUF files
 
-For teaching on a T4, quantised GGUF files are almost always the right choice. A 7–8B model in full
-precision does not leave room for a second user; the same model quantised to 4- or 8-bit does,
-and loads in a fraction of the time.
+On a T4, use quantized GGUF files. A 7 to 8B model at full precision doesn't leave room for a
+second person. The same model quantized to 4 or 8 bits does, and it loads much faster.
 
-The image has `llama-cpp-python` built against CUDA for exactly this, plus `gguf`,
-`huggingface_hub`, `transformers`, `sentence-transformers`, `langchain`, `llama-index`, `chromadb`
-and `diffusers`.
+The image has `llama-cpp-python` built for CUDA, plus `gguf`, `huggingface_hub`, `transformers`,
+`sentence-transformers`, `langchain`, `llama-index`, `chromadb` and `diffusers`.
 
-Start smaller than you think you need. A 1–4B instruct model answers quickly, leaves headroom, and
-is usually enough to teach the concept.
+Start smaller than you think. A 1 to 4B instruct model answers quickly, leaves room for the other
+person, and is usually enough to teach the idea.
 
-## Download weights once, to the shared folder
+## Download the model once, to the shared folder
 
-Do not have thirty students each pull several GB from Hugging Face into their own home directories.
-It is slow, it repeats the same download, and it will exhaust the 5 GiB home quota.
+Don't have 30 students each download several GB from Hugging Face into their home directories. It
+is slow and it will fill up their 5 GiB.
 
-Put the weights in the shared folder instead, where instructors can write and everyone can read:
+Put the model in the shared folder instead. Instructors can write there and everyone can read it:
 
 ```python
 from huggingface_hub import hf_hub_download
@@ -51,7 +49,7 @@ hf_hub_download(
 )
 ```
 
-Then point students at the file rather than at the Hub:
+Then have students load it from that file:
 
 ```python
 from llama_cpp import Llama
@@ -63,22 +61,22 @@ llm = Llama(
 )
 ```
 
-`n_gpu_layers=-1` puts the whole model on the GPU. Lowering it moves layers to CPU — slower, but a
-way to fit a model that is otherwise too large.
+`n_gpu_layers=-1` puts the whole model on the GPU. A lower number moves some of it to the CPU. That
+is slower, but it lets a bigger model fit.
 
-[Tuning Llama for a Small Model](tuning-llama.md) covers these settings properly, including
-`n_ctx`, which is the usual cause of an out-of-memory error at load.
+See [Tuning Llama for a Small Model](tuning-llama.md) for these settings, including `n_ctx`, which
+is the usual cause of running out of memory when the model loads.
 
 :::{note}
-Shared-folder downloads only work from an account with write access there, normally an
-instructor's. Do the download once yourself before class.
+Only accounts that can write to the shared folder can download there, which is usually instructors.
+Do the download yourself once before class.
 :::
 
 ## Before you teach with it
 
-Run the notebook end to end on the hub, not just on your laptop. Then, if you can, have a colleague
-start a GPU session at the same time and run it again — that is the only way to find out whether
-your model leaves room for a second person, and it is the failure students will actually hit.
+Run the notebook all the way through on the hub, not just on your laptop. If you can, have a
+colleague start a GPU session at the same time and run it again. That is how you find out if your
+model leaves room for a second person, which is the problem students will run into.
 
-[Shutting down when you're done](../environments/gpu.md#shutting-down-when-youre-done) matters more
-on GPU hubs than anywhere else: an idle GPU session holds VRAM that nobody else can use.
+On GPU hubs, [stop your server](../environments/gpu.md#stopping-your-server) when you're done. An
+idle GPU session holds memory nobody else can use.

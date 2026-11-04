@@ -1,50 +1,48 @@
 # Tuning Llama for a Small Model
 
-Getting a model running is covered in [Setting Up Inference](inference.md). This page is about what
-you pass to `Llama(...)` afterwards — which settings decide whether it runs at all, which only
-change the output, and how to tell them apart.
+[Setting Up Inference](inference.md) covers getting a model running. This page covers the settings
+you pass to `Llama(...)` after that: which ones decide if the model fits, and which ones only change
+the answers.
 
-The distinction matters because they fail differently. A memory setting that is too ambitious fails
-loudly, at load, before a single token is generated. A sampling setting that is wrong just gives
-you worse answers.
+They fail in different ways. A memory setting that is too high fails right away, when the model
+loads. An output setting that is off just gives you worse answers.
 
 ## The memory budget
 
-Three things occupy VRAM:
+Three things use GPU memory:
 
-1. **The model weights** — fixed by which file you chose.
-2. **The KV cache** — scratch space for the conversation so far. Set by `n_ctx`, allocated **up
-   front**, and the usual surprise.
-3. **Working memory** for processing the prompt, influenced by `n_batch`.
+1. **The model weights.** This depends on which file you picked.
+2. **The KV cache.** This holds the conversation so far. It is set by `n_ctx` and all of it is
+   reserved **when the model loads**. This is the one that surprises people.
+3. **Working memory** for reading the prompt, set by `n_batch`.
 
-On a shared T4 there is 16GB and [two people drawing on it](../environments/gpu.md). Plan around
-**7GB**, not 16.
+A shared T4 has 16 GB and [two people using it](../environments/gpu.md). Plan for **7 GB**, not
+16.
 
-## `n_ctx` — the one that catches people
+## `n_ctx`
 
-`n_ctx` is how many tokens the model can hold in view. It looks free. It is not: the KV cache grows
-**linearly** with it, and the whole allocation happens when the model loads.
+`n_ctx` is how many tokens the model can keep track of. It uses more memory than you'd expect: the
+KV cache grows with it, and all of it is reserved when the model loads.
 
 ```python
 n_ctx = 512   # the default: small
-n_ctx = 0     # means "use the model's full trained length"
+n_ctx = 0     # use the model's full trained length
 ```
 
 :::{warning}
-`n_ctx=0` is not "pick something sensible" — it is "use everything this model was trained for",
-which on a modern small model can be 128,000 tokens. The KV cache for that can exceed the whole
-card before you generate anything, and it surfaces as a CUDA out-of-memory error at load.
+`n_ctx=0` means "use everything this model was trained for." On a newer small model that can be
+128,000 tokens. The KV cache for that can be bigger than the whole GPU, and you get a CUDA out of
+memory error when the model loads.
 :::
 
-**Set it to what your prompts actually need**, with headroom. Question-answering over a paragraph
-might need 2,048. Summarising a long PDF might need 8,192. Reach for 32,768 only after measuring
-that you need it.
+**Set it to what your prompts need**, plus some extra. Answering questions about a paragraph might
+need 2,048. Summarizing a long PDF might need 8,192. Only go up to 32,768 if you've checked that
+you need it.
 
-When the model loads, llama.cpp prints what it allocated — look for the lines reporting KV cache and
-buffer sizes. That is the authoritative number, and it moves when you change `n_ctx`. Halve `n_ctx`,
-reload, and watch it halve.
+When the model loads, llama.cpp prints how much memory it reserved. Look for the KV cache and
+buffer sizes. Cut `n_ctx` in half, reload, and you'll see those numbers drop by half.
 
-## `n_gpu_layers` — everything on the GPU, or split
+## `n_gpu_layers`
 
 ```python
 n_gpu_layers = 0    # the default: CPU only
@@ -53,44 +51,42 @@ n_gpu_layers = 20   # the first 20 layers on the GPU, the rest on CPU
 ```
 
 :::{warning}
-**The default is `0`, which means the GPU is not used at all.** A notebook that runs but feels
-inexplicably slow on a GPU hub is usually this. It is not an error, so nothing tells you.
+**The default is `0`, which means the GPU isn't used at all.** If a notebook runs but is very slow
+on a GPU hub, this is usually why. There is no error, so nothing tells you.
 :::
 
-**Put everything on the GPU** — `-1` — when the weights plus the KV cache fit in your share of the
-card. For a quantised 1–2B model at a modest `n_ctx` they will, and it is several times faster.
-This is the case you want.
+**Use `-1`** to put everything on the GPU when the model and KV cache fit in your share. For a
+quantized 1 to 2B model with a reasonable `n_ctx`, they will, and it is several times faster.
 
-**Split the work** when they do not fit. Offloading only some layers runs the remainder on CPU, and
-every token crosses that boundary, so it is substantially slower — but it is the difference between
-slow and not running at all. Start high and come down until it loads: try `-1`, then 24, then 16.
+**Use a smaller number** when they don't fit. The rest runs on the CPU, which is a lot slower, but
+slow is better than not running. Start high and go down until it loads: try `-1`, then 24, then
+16.
 
-Splitting is also a considerate choice when someone else is working on the other half of the card
-and you would otherwise crowd them out.
+A smaller number also leaves more room for the other person on the GPU.
 
 ## `n_batch`
 
-How many prompt tokens are processed at once (default `512`). It affects memory during the *prompt*
-phase, not generation. If a model loads happily and then runs out of memory on a long prompt, lower
-this before touching anything else.
+How many prompt tokens are read at once (default `512`). It only uses memory while the prompt is
+being read, not while the answer is generated. If a model loads fine and then runs out of memory on
+a long prompt, lower this first.
 
-## The settings that only change the output
+## Settings that only change the answers
 
-None of these affect whether the model fits.
+None of these change whether the model fits.
 
 | Setting | What it does |
 |---|---|
-| `temperature` | Randomness. `0` is deterministic and repetitive, `0.7`–`0.8` is conversational, above `1.2` tends to wander. |
-| `top_p` | Consider only the most likely tokens that together reach this probability. `0.9` pairs conventionally with temperature. |
-| `top_k` | Consider only the `k` most likely tokens. Blunter than `top_p`. |
-| `repeat_penalty` | Discourages repetition. Raise it if the model loops. |
-| `max_tokens` | How long the answer may be. Costs time, not VRAM. |
-| `seed` | Fixes the random draw, so the same prompt gives the same answer. |
+| `temperature` | Randomness. `0` gives the same answer every time and can repeat itself, `0.7` to `0.8` sounds natural, above `1.2` tends to drift off topic. |
+| `top_p` | Only pick from the most likely tokens that add up to this probability. `0.9` is a common choice. |
+| `top_k` | Only pick from the `k` most likely tokens. |
+| `repeat_penalty` | Makes repeating less likely. Raise it if the model gets stuck in a loop. |
+| `max_tokens` | How long the answer can be. Longer takes more time, not more memory. |
+| `seed` | Fixes the randomness, so the same prompt gives the same answer. |
 
 :::{note}
-Set `seed` for anything you will grade or demonstrate. Without it two students running identical
-code get different answers, and so do you when you re-run it in front of the class.
-`temperature=0` is the stronger guarantee of the two.
+Set `seed` for anything you grade or demo. Without it, two students running the same code get
+different answers, and so do you when you run it again in front of the class. `temperature=0` is
+even more reliable.
 :::
 
 ## A starting point
@@ -113,14 +109,14 @@ out = llm.create_chat_completion(
 )
 ```
 
-Change one thing at a time. If it stops loading, the last thing you changed was almost certainly
+Change one thing at a time. If it stops loading, the last thing you changed was almost always
 `n_ctx` or `n_gpu_layers`.
 
 ## When it fails
 
 | What you see | Usually |
 |---|---|
-| CUDA out of memory **at load** | `n_ctx` too large, or someone else is using the card |
-| Out of memory **partway through a long prompt** | `n_batch` too large |
-| Loads and runs, but very slowly | `n_gpu_layers` left at its default of `0` |
-| Worked yesterday, fails today | The other half of the shared GPU is in use — check `nvidia-smi` |
+| CUDA out of memory **when it loads** | `n_ctx` is too big, or someone else is using the GPU |
+| Out of memory **partway through a long prompt** | `n_batch` is too big |
+| Runs, but very slowly | `n_gpu_layers` is still the default `0` |
+| Worked yesterday, fails today | The other person on the GPU is using it. Check `nvidia-smi` |
