@@ -1,56 +1,55 @@
 # Requesting Packages
 
-If a package your course needs is not in the image, there are two routes: ask for it to be added
-permanently, or install it yourself for right now. Ask for it to be added if your class depends on
-it; install it yourself if you need it today.
+If your course needs a package that isn't in the image, you can ask us to add it, or install it
+yourself right away. Ask us if your class depends on it. Install it yourself if you need it today.
 
-## Ask for it to be added
+## Ask us to add it
 
-This is the right route for anything a class will rely on. The package becomes part of the image,
-so every student has it without doing anything.
+Do this for anything your class will use. The package goes into the image, so every student has it.
 
-Open an issue on the repository for the image your course uses:
+Open an issue on the repository for your course's image:
 
-- the CPU image: [cal-icor/base-user-image](https://github.com/cal-icor/base-user-image/issues/new)
-- the GPU small-models workshop image:
+- CPU image: [cal-icor/base-user-image](https://github.com/cal-icor/base-user-image/issues/new)
+- GPU small-models workshop image:
   [cal-icor/workshop-gpu-image](https://github.com/cal-icor/workshop-gpu-image/issues/new)
 
-The Pangeo TensorFlow and PyTorch images on GPU hubs come from the Pangeo project, so we cannot add
-packages to them; ask for the package in the workshop image instead.
+The TensorFlow and PyTorch images on GPU hubs come from the Pangeo project, so we can't add packages
+to them. Ask for the package in the workshop image instead.
 
-In the issue, say:
+In the issue, include:
 
-- the package name, and the exact version if the course needs one
-- which hub and course it is for
-- when you need it by
+- the package name, and the version if you need a specific one
+- your hub and course
+- when you need it
 
-Adding a package means rebuilding and redeploying the image, so it is not instant. Ask with some
-runway before a class depends on it — the week before an assignment is comfortable, the morning of
-is not.
+We have to rebuild and redeploy the image, so it takes some time. Ask at least a week before the
+assignment that needs it.
 
 :::{note}
-Check first that it is actually missing. The images already include most of the common teaching
-stack; see [CPU Environment](cpu.md) and [GPU Environment](gpu.md).
+Check that it's really missing first. Most common packages are already there. See
+[CPU Environment](cpu.md) and [GPU Environment](gpu.md).
 :::
 
-## Install one yourself, today
+## Install it yourself
 
-When you need something immediately, install it into your own home directory:
+If you need something now, install it in your home directory:
 
 ```
 pip install --user <package>
 ```
 
-This lands in `~/.local`, which is part of your home directory, so it persists across sessions and
-survives your server restarting. Restart the kernel afterwards so the running notebook picks it up.
+It goes into `~/.local`, which is in your home directory, so it stays after your server restarts.
+Restart the kernel afterwards so your notebook can use it.
 
 :::{warning}
-A `--user` install belongs to you alone. Your students will not have it, so it is not a way to
-distribute a package to a class — if an assignment needs it, it has to go in the image.
+A `--user` install is only for you. Your students won't have it. If an assignment needs a package,
+it has to go in the image.
 :::
 
 :::{note}
-Packages installed this way take precedence over the image's own copies, which occasionally breaks
-things in confusing ways after the image is updated. If an environment starts behaving oddly,
-`pip list --user` shows what you have added, and removing it is usually the fix.
+Packages you install this way are used instead of the image's copies. After we update the image,
+this can break things. If your environment starts acting strange, run `pip list --user` to see what
+you added. Removing it usually fixes the problem.
 :::
+
+Questions? See [Getting help](../getting-help.md).
