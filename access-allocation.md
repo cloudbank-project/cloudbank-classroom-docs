@@ -41,7 +41,8 @@ page. Have these ready:
 1. Go to the [ACCESS registration page](https://account.access-ci.org/register) and enter your
    school email address. Gmail, Yahoo and other personal addresses won't work. If you have an old
    XSEDE account, you can use it.
-2. Verify your email. After that, ACCESS asks how you want to sign in. If your school uses
+2. Verify your email. The code comes from **registry@cilogon.org**, so check your spam folder if
+   you don't see it. After that, ACCESS asks how you want to sign in. If your school uses
    Microsoft for email, or you don't see your school in the list, choose **register without an
    existing identity**. You will set an ACCESS password and set up Duo on your phone.
 3. Fill in the registration information and accept the acceptable use policy. Make sure you fill
@@ -115,8 +116,9 @@ These are the problems we see most often.
 **Your school's email domain isn't recognized.** You get an *Unknown Email Domain* error. ACCESS
 has to add your domain, which takes a support ticket. Let us know and we will open one.
 
-**The verification email never shows up.** Check your spam folder. If it isn't there, let us know.
-This also needs a ticket.
+**The verification email never shows up.** It comes from **registry@cilogon.org**. Check your spam
+folder. Some schools block this address, so if it isn't there, ask your IT department to allow it,
+or let us know. This may also need a ticket.
 
 **You created the account but never submitted the request.** This is the most common one. Creating
 the account (Step 1) and requesting the project (Step 2) are separate. Log in and look under **My
