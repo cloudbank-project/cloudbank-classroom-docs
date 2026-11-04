@@ -55,9 +55,9 @@ page. Have these ready:
    You will set up Duo on your phone the first time you log in.
 
 :::{note}
-When you log in, CILogon asks you to pick an identity provider. Choose **ACCESS CI (XSEDE)** and use
-your ACCESS ID and the password you just made. Don't pick your school, Google, or Microsoft. You
-don't need your school login.
+When you log in, CILogon asks you to pick an identity provider. If you made an ACCESS password,
+choose **ACCESS CI (XSEDE)** and use your ACCESS ID and that password. If you signed up with your
+school login, pick your school instead.
 :::
 
 :::{figure} images/access-cilogon-access-ci.png
